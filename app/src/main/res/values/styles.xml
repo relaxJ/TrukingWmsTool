@@ -1,0 +1,135 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="BaseAppTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BaseAppTheme" parent="BaseAppTheme.NoActionBar" />
+
+    <style name="BaseAppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--EditText默认输入样式-->
+    <style name="AppTheme.editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="anim_popup_dir">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
+    <!--Button默认样式-->
+
+    <style name="DialogThemeNoTitle" parent="android:Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--弹出选择方式-->
+    <style name="PhotoStyle" parent="android:Animation">
+        <!--&lt;!&ndash; 进入时的动画 &ndash;&gt;-->
+        <item name="@android:windowEnterAnimation">@anim/dialog_bottom_in</item>
+        <!--&lt;!&ndash; 退出时的动画 &ndash;&gt;-->
+        <item name="@android:windowExitAnimation">@anim/dialog_bottom_out</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.Fullscreen" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+<!--    <style name="AppTheme.Splash" parent="AppTheme">-->
+<!--        <item name="android:windowTranslucentStatus" tools:ignore="NewApi">true</item>-->
+<!--        <item name="android:windowBackground">@drawable/loading_page</item>-->
+<!--    </style>-->
+
+    <style name="normal_header_img_style">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="btn_common_style">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/btn_common_selector</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/btn_color_selector</item>
+    </style>
+
+    <style name="btn_main_style">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/btn_main_bg_selector</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="captcha_btn_style">
+        <item name="android:layout_height">27dp</item>
+        <item name="android:background">@drawable/btn_captcha_selector</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="btn_sytle_actionBarItemBackground">
+        <!--超出边界水纹-->
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+    </style>
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/textColorThird</item>
+        <item name="colorControlActivated">@color/textColorThird</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--顶部菜单的弹出动画-->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabPaddingStart">4dp</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabTextColor">#000000</item>
+        <item name="tabPaddingEnd">4dp</item>
+        <item name="tabSelectedTextColor">#03acfd</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <!-- transparent:透明的-->
+    <style name="Dialog_theme" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

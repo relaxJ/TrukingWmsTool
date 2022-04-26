@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_round_corner"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_common_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="温馨提示"
+            android:textStyle="bold"
+            android:textColor="@color/textColorMain"
+            android:textSize="23sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_common_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textColor="@color/textColorMain"
+        android:text="信息已存在，是否覆盖保存！"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorCommonLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_common_btn_left"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="取消"
+            android:textColor="@color/assistColorBlue"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="44dp"
+            android:background="@color/colorCommonLine" />
+
+        <Button
+            android:id="@+id/dialog_common_btn_right"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="确认"
+            android:textColor="@color/assistColorBlue"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

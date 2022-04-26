@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    app:elevation="0dp">
+
+    <com.truking.wms.tool.utils.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/btn_right"
+            style="@style/btn_sytle_actionBarItemBackground"
+            android:layout_width="60dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="right|center"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/textColorMain" />
+
+        <TextView
+            android:id="@+id/btn_right_two"
+            style="@style/btn_sytle_actionBarItemBackground"
+            android:layout_width="60dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="right|center"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/textColorMain" />
+    </com.truking.wms.tool.utils.Toolbar>
+
+</android.support.design.widget.AppBarLayout>

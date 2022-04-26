@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">楚天仓库</string>
+
+    <!-- 主界面 -->
+    <string name="act_main_tab_one" tools:ignore="MissingTranslation">基础数据</string>
+    <string name="act_main_tab_two" translatable="false">实用功能</string>
+    <string name="act_main_tab_three" translatable="false">个人中心</string>
+
+    <string name="header_pull_down" translatable="false">下拉可以刷新</string>
+    <string name="header_refreshing" translatable="false">正在刷新...</string>
+    <string name="header_loading" translatable="false">正在加载...</string>
+    <string name="header_release" translatable="false">释放立即刷新</string>
+    <string name="header_finished" translatable="false">刷新完成</string>
+    <string name="header_failed" translatable="false">刷新失败</string>
+
+    <string name="footer_pull_up" translatable="false">上拉加载更多</string>
+    <string name="footer_release" translatable="false">释放立即加载</string>
+    <string name="footer_loading" translatable="false">正在加载...</string>
+    <string name="footer_refreshing" translatable="false">正在刷新...</string>
+    <string name="footer_finished" translatable="false">加载完成</string>
+    <string name="footer_failed" translatable="false">加载失败</string>
+    <string name="footer_allloaded" translatable="false">全部加载完成</string>
+
+    <string name="toast_back_message" translatable="false">再按一次退出程序.</string>
+
+</resources>
