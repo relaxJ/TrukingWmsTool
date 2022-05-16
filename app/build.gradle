@@ -6,8 +6,8 @@ android {
         applicationId "com.truking.wms.tool"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 11
-        versionName "1.1"
+        versionCode 12
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -31,7 +31,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all {
             if (variant.name == 'release') {
-                outputFileName = "TrukingWmsTool-V1.1.apk"
+                outputFileName = "TrukingWmsTool-V1.2.apk"
             }
         }
     }

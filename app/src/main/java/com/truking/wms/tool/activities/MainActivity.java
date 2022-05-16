@@ -31,6 +31,7 @@ import com.truking.wms.tool.R;
 import com.truking.wms.tool.fragment.Fragment_Practicalfeatures;
 import com.truking.wms.tool.fragment.Fragment_Me;
 import com.truking.wms.tool.fragment.Fragment_BasicData;
+import com.truking.wms.tool.fragment.Fragment_Report;
 import com.truking.wms.tool.utils.DownloadUtil;
 import com.truking.wms.tool.utils.PreferenceHelper;
 import com.truking.wms.tool.utils.XToastUtil;
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.i("11111","1111221");
                 String string = response.body().string();
                 JSONObject json = null;
                 try {
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     appurl = jsonData.optString("url");
                     //从本地获取版本号和线上的进行匹配
                     String versionLocal = PreferenceHelper.getVersion();
-                    Log.i("version555",versionLocal+";"+version);
                     if(versionLocal.equals("")){
                         //需要更新
                         PreferenceHelper.saveVersion(version);
@@ -348,6 +347,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         final List<Fragment> fragments = new ArrayList<>();
         fragments.add(new Fragment_BasicData());
         fragments.add(new Fragment_Practicalfeatures());
+        fragments.add(new Fragment_Report());
         fragments.add(new Fragment_Me());
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             }
         };
         viewpager.setAdapter(adapter);
-        viewpager.setOffscreenPageLimit(3);
+        viewpager.setOffscreenPageLimit(4);
 
     }
 
@@ -370,13 +370,14 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         tabLayout.setupWithViewPager(viewpager);
 
         // 设置初始化菜单
-        if (tabLayout.getTabCount() < 3) {
+        if (tabLayout.getTabCount() < 4) {
             return;
         }
         try {
             tabLayout.getTabAt(0).setCustomView(addTabIcon(getResources().getString(R.string.act_main_tab_one), true, R.drawable.icon_001));
             tabLayout.getTabAt(1).setCustomView(addTabIcon(getResources().getString(R.string.act_main_tab_two), false, R.drawable.icon_02));
             tabLayout.getTabAt(2).setCustomView(addTabIcon(getResources().getString(R.string.act_main_tab_three), false, R.drawable.icon_03));
+            tabLayout.getTabAt(3).setCustomView(addTabIcon(getResources().getString(R.string.act_main_tab_four), false, R.drawable.icon_03));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -395,6 +396,9 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 } else if (tab == tabLayout.getTabAt(2)) {
                     setTabIcon(tab.getCustomView(), getResources().getString(R.string.act_main_tab_three), true, R.drawable.icon_003);
                     viewpager.setCurrentItem(2);
+                }else if (tab == tabLayout.getTabAt(3)) {
+                    setTabIcon(tab.getCustomView(), getResources().getString(R.string.act_main_tab_four), true, R.drawable.icon_004);
+                    viewpager.setCurrentItem(3);
                 }
             }
 
@@ -407,6 +411,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     setTabIcon(tab.getCustomView(), getResources().getString(R.string.act_main_tab_two), false, R.drawable.icon_02);
                 } else if (tab == tabLayout.getTabAt(2)) {
                     setTabIcon(tab.getCustomView(), getResources().getString(R.string.act_main_tab_three), false, R.drawable.icon_03);
+                }else if (tab == tabLayout.getTabAt(3)) {
+                    setTabIcon(tab.getCustomView(), getResources().getString(R.string.act_main_tab_four), false, R.drawable.icon_04);
                 }
             }
 

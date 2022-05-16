@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.truking.wms.tool.R;
+import com.truking.wms.tool.adapters.ShipmentdetailAdapter;
 import com.truking.wms.tool.utils.ButtonUtils;
 import com.truking.wms.tool.utils.LoadingStaticDialog;
 import com.truking.wms.tool.utils.NetworkUtil;
@@ -30,46 +34,42 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    @BindView(R.id.username)
-    public EditText ed_userName;
-    @BindView(R.id.password)
-    public EditText ed_password;
-    @BindView(R.id.operatePwd)
-    ImageView operatePwd;
-    @BindView(R.id.register)
-    LinearLayout register;
+public class LoginDingdingActivity extends AppCompatActivity implements View.OnClickListener{
+    @BindView(R.id.phoneNo)
+    public EditText ed_phoneNo;
+    @BindView(R.id.vcode)
+    public EditText ed_vcode;
+    @BindView(R.id.forget_btn_captcha)
+    Button forgetBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyApp.getActivities().add(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_dingding);
         ButterKnife.bind(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-
-        ed_userName.setText(PreferenceHelper.getUserId());
     }
 
-    @OnClick({R.id.login_confirm,R.id.operatePwd,R.id.register})
+    @OnClick({R.id.login_confirm,R.id.forget_btn_captcha})
     public void onViewClicked(View view){
         switch (view.getId()) {
             case R.id.login_confirm: {
                 if(!ButtonUtils.isFastDoubleClick(R.id.login_confirm)){
                     //检验用户名和密码
-                    String username = ed_userName.getText().toString();
-                    String password = ed_password.getText().toString();
-                    if(username == null || username != null && "".equals(username)){
-                        XToastUtil.showToast(this,"请输入用户名！");
+                    String phoneNo = ed_phoneNo.getText().toString();
+                    String vcode = ed_vcode.getText().toString();
+                    if(phoneNo == null || phoneNo != null && "".equals(phoneNo)){
+                        XToastUtil.showToast(this,"请输入电话！");
                         return;
                     }
-                    if(password == null || password != null && "".equals(password)){
-                        XToastUtil.showToast(this,"请输入密码！");
+                    if(vcode == null || vcode != null && "".equals(vcode)){
+                        XToastUtil.showToast(this,"请输入验证码！");
                         return;
                     }
                     //登录
-                    LoadingStaticDialog.showLoadingDialog(LoginActivity.this, "登录中");
+                    LoadingStaticDialog.showLoadingDialog(LoginDingdingActivity.this, "登录中");
                     startTimer();
                     missDialog = true;
                     //网络请求
@@ -77,14 +77,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     JSONObject parameters = new JSONObject();
                     //添加参数
                     try {
-                        parameters.put("code", username);
-                        parameters.put("name", "");
-                        parameters.put("password", password);
-                        parameters.put("department", "");
-                        parameters.put("email", "");
-                        parameters.put("phoneNo", "");
-                        parameters.put("remark", "");
-                        parameters.put("vcode", "");
+                        parameters.put("phoneNo", phoneNo);
+                        parameters.put("vcode", vcode);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -94,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onFailure(Call call, IOException e) {
                                 Looper.prepare();
-                                XToastUtil.showToast(LoginActivity.this,"登录失败！"+e.getLocalizedMessage());
+                                XToastUtil.showToast(LoginDingdingActivity.this,"登录失败！"+e.getLocalizedMessage());
                                 missDialog = false;
                                 LoadingStaticDialog.loadDialogDismiss();
                                 stopTimer();
@@ -115,15 +109,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     int code = jsonObject.getInt("code");
                                     String info = jsonObject.getString("info");
                                     if(code != 200){
-                                        XToastUtil.showToast(LoginActivity.this,info);
+                                        XToastUtil.showToast(LoginDingdingActivity.this,info);
                                         Looper.loop();
                                         return;
                                     }
                                     JSONObject jsonObject1 = new JSONObject(data);
                                     String token = jsonObject1.getString("token");
                                     PreferenceHelper.saveToken(token);
-                                    PreferenceHelper.saveUserId(username);
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    PreferenceHelper.saveUserId(phoneNo);
+                                    Intent intent = new Intent(LoginDingdingActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -135,27 +129,74 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             }
-            case R.id.operatePwd:{
-                if(ed_password.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD) ){
-                    operatePwd.setImageDrawable(getResources().getDrawable(R.drawable.hidepwd));
-                    ed_password.setInputType(InputType.TYPE_CLASS_TEXT);
-                    ed_password.setSelection(ed_password.getText().length());
-                }else{
-                    //设置密文的时候，需要同时设置type_class_text 才能生效
-                    operatePwd.setImageDrawable(getResources().getDrawable(R.drawable.showpwd));
-                    ed_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    ed_password.setSelection(ed_password.getText().length());
+            case R.id.forget_btn_captcha: {
+                //校验手机号格式是否正确
+                String phoneNo = ed_phoneNo.getText().toString();
+                if (phoneNo.length() == 0 || phoneNo.contains("@")) {
+                    XToastUtil.showToast(LoginDingdingActivity.this, "手机号格式不对！");
+                    break;
                 }
-                break;
-            }case R.id.register:{
-                if(!ButtonUtils.isFastDoubleClick(R.id.register)){
-                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                    startActivity(intent);
+                //网络请求
+                String url = "http://172.16.1.131:9090/api/app/appuser";
+                JSONObject parameters = new JSONObject();
+                //添加参数
+                try {
+                    parameters.put("phoneNo", phoneNo);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+                NetworkUtil networkUtil = new NetworkUtil();
+                networkUtil.setCallback(
+                        new okhttp3.Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Looper.prepare();
+                                XToastUtil.showToast(LoginDingdingActivity.this, "获取验证码失败！" + e.getLocalizedMessage());
+                                Looper.loop();
+                            }
+
+                            @Override
+                            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                                Looper.prepare();
+                                Message message = handler.obtainMessage();
+                                message.what = 1;
+                                handler.sendMessage(message);
+                                Looper.loop();
+                            }
+                        });
+                networkUtil.post(url, parameters);
                 break;
             }
         }
     }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                ed_vcode.requestFocus();
+                ed_vcode.setSelection(ed_vcode.getText().length());
+                countDownTimer1.start();
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    private CountDownTimer countDownTimer1 = new CountDownTimer(60 * 1000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            forgetBtn.setText(millisUntilFinished / 1000 + "s");//设置倒计时时间
+            //设置按钮为灰色，这时是不能点击的
+            forgetBtn.setEnabled(false);
+        }
+
+        @Override
+        public void onFinish() {
+            forgetBtn.setText("重试");
+            forgetBtn.setClickable(true);//重新获得点击
+            forgetBtn.setEnabled(true);
+        }
+    };
 
     private  boolean missDialog;
     private CountDownTimer countDownTimer;
@@ -171,7 +212,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onFinish() {
                 if(missDialog == true){
                     LoadingStaticDialog.loadDialogDismiss();
-                    XToastUtil.showToast(LoginActivity.this, "请求超时！");
+                    XToastUtil.showToast(LoginDingdingActivity.this, "请求超时！");
                     stopTimer();
                 }
             }

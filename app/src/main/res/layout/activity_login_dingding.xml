@@ -21,7 +21,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/logo1"
+            android:src="@drawable/trukinglogo"
             android:layout_gravity="center"></ImageView>
 
         <LinearLayout
@@ -40,12 +40,12 @@
 
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/phoneNo"
                     style="@style/AppTheme.editTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="工号"
+                    android:hint="手机号"
                     android:textColorHint="@color/textColorThird"
                     android:textSize="20sp" />
 
@@ -72,20 +72,25 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/vcode"
                     style="@style/AppTheme.editTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="密码"
+                    android:hint="验证码"
                     android:inputType="textPassword"
                     android:textColorHint="@color/textColorThird"
                     android:textSize="20sp" />
-                <ImageView
-                    android:id="@+id/operatePwd"
+                <Button
+                    android:id="@+id/forget_btn_captcha"
+                    style="@style/captcha_btn_style"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/showpwd"></ImageView>
+                    android:layout_gravity="center"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:textAllCaps="false"
+                    android:text="验证码"
+                    android:textSize="12sp" />
 
 
             </LinearLayout>
@@ -102,30 +107,6 @@
             android:layout_marginTop="30dp"
             android:text="登 录"
             android:textColor="@color/white"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="注册"
-                    android:textColorHint="@color/assistColorBlue"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
 
     </LinearLayout>
 

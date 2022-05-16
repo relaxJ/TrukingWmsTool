@@ -1,10 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">楚天仓库</string>
+    <string name="app_name" translatable="false">楚天实用工具</string>
 
     <!-- 主界面 -->
     <string name="act_main_tab_one" tools:ignore="MissingTranslation">基础数据</string>
     <string name="act_main_tab_two" translatable="false">实用功能</string>
-    <string name="act_main_tab_three" translatable="false">个人中心</string>
+    <string name="act_main_tab_three" translatable="false">报表</string>
+    <string name="act_main_tab_four" translatable="false">个人中心</string>
 
     <string name="header_pull_down" translatable="false">下拉可以刷新</string>
     <string name="header_refreshing" translatable="false">正在刷新...</string>

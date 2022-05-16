@@ -87,6 +87,29 @@
                     android:gravity="center|left"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/view_sanzhuangwuliaobuhuo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@color/textColorThird">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    android:autoSizeMaxTextSize="30sp"
+                    android:autoSizeMinTextSize="20sp"
+                    android:autoSizePresetSizes="30sp"
+                    android:autoSizeTextType="uniform"
+                    android:text="散装物料补货"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:gravity="center|left"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/other"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"

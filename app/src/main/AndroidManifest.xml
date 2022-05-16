@@ -20,19 +20,33 @@
     <application
         android:name="com.truking.wms.tool.activities.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_aa"
+        android:icon="@mipmap/logo1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_aa"
+        android:roundIcon="@mipmap/logo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.truking.wms.tool.activities.LoginActivity"  >
+        <activity android:name="com.truking.wms.tool.activities.WelcomeActivity"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name="com.truking.wms.tool.activities.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.truking.wms.tool.activities.ProfileActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.truking.wms.tool.activities.SettingsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.truking.wms.tool.activities.GuideActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.truking.wms.tool.activities.RegisterActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name="com.truking.wms.tool.activities.AboutActivity"
             android:screenOrientation="portrait">
         </activity>
@@ -67,6 +81,9 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.truking.wms.tool.activities.BocibiaoqianWarehousesActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.truking.wms.tool.activities.ReplenishmentActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.truking.wms.tool.activities.BluetoothListActivity"

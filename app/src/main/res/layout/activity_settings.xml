@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fitsSystemWindows="true"
-    app:statusBarBackground="@color/white">
-
-   <!-- <android.support.v7.widget.Toolbar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/toolbar_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:title="锁名称"
-        app:titleTextColor="@color/black"
-        android:minHeight="?attr/actionBarSize" />-->
+    android:background="@color/bgColor"
+    android:fitsSystemWindows="false"
+    app:statusBarBackground="@color/white"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:ignore="MissingConstraints">
+        android:fitsSystemWindows="false"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,11 +22,11 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/back"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/about_back"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
@@ -50,14 +40,14 @@
                 android:layout_weight="1"
                 android:gravity="center">
                 <TextView
-                    android:id="@+id/detail_lockname"
+                    android:id="@+id/record_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:drawablePadding="4dp"
                     android:textAlignment="center"
-                    android:text="关于我们"
+                    android:text="设置"
                     android:textColor="@color/textColorMain"
                     android:textSize="17sp" />
             </LinearLayout>
@@ -84,31 +74,18 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/trukinglogo"/>
-            <TextView
-                android:id="@+id/version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="V1.2"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="32dp"
+            android:background="@color/transparent" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/settings_btn_logoff"
+            style="@style/btn_common_style"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:text="退出登录" />
 
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

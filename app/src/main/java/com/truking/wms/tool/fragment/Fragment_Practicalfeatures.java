@@ -12,8 +12,8 @@ import android.widget.LinearLayout;
 
 import com.truking.wms.tool.R;
 import com.truking.wms.tool.activities.BocibiaoqianWarehousesActivity;
-import com.truking.wms.tool.activities.ImportBasicDataActivity;
 import com.truking.wms.tool.activities.PandianActivity;
+import com.truking.wms.tool.activities.ReplenishmentActivity;
 import com.truking.wms.tool.activities.WuliaobiaoqianDayingActivity;
 import com.truking.wms.tool.utils.ButtonUtils;
 
@@ -31,11 +31,12 @@ public class Fragment_Practicalfeatures extends Fragment {
     public LinearLayout view_bocibiaoqian;
     @BindView(R.id.pandian)
     public LinearLayout view_pandian;
-
+    @BindView(R.id.view_sanzhuangwuliaobuhuo)
+    public LinearLayout view_sanzhuangwuliaobuhuo;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_lanyadaying, container, false);
+        rootView = inflater.inflate(R.layout.fragment_practicalfeatures, container, false);
         ButterKnife.bind(getActivity());
         super.onCreateView(inflater, container, savedInstanceState);
         return rootView;
@@ -70,6 +71,16 @@ public class Fragment_Practicalfeatures extends Fragment {
             public void onClick(View v) {
                 if (!ButtonUtils.isFastDoubleClick(R.id.write)) {
                     Intent intent = new Intent(getActivity(), BocibiaoqianWarehousesActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        view_sanzhuangwuliaobuhuo = (LinearLayout) getActivity().findViewById(R.id.view_sanzhuangwuliaobuhuo);
+        view_sanzhuangwuliaobuhuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!ButtonUtils.isFastDoubleClick(R.id.write)) {
+                    Intent intent = new Intent(getActivity(), ReplenishmentActivity.class);
                     startActivity(intent);
                 }
             }

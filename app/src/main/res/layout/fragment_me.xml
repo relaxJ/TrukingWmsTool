@@ -44,7 +44,7 @@
                         android:background="@color/transparent"
                         android:drawablePadding="4dp"
                         android:textAlignment="center"
-                        android:text="@string/act_main_tab_three"
+                        android:text="@string/act_main_tab_four"
                         android:textColor="@color/textColorMain"
                         android:textSize="17sp" />
                 </LinearLayout>
@@ -85,7 +85,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     app:actualImageScaleType="centerCrop"
-                    app:placeholderImage="@drawable/trukinglogo"
+                    app:placeholderImage="@mipmap/logo1"
                     app:placeholderImageScaleType="centerCrop"
                     app:roundAsCircle="true" />
 
